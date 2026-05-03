@@ -1,0 +1,696 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+   color: #333;
+   min-width: 320px;
+   max-width: 1200px;
+   margin: 0 auto;
+ background-color: #ccc;
+
+  
+}
+
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+ padding: 0 20px;
+    color: #1973B0;}
+   
+
+/* Шапка */
+header {
+ 
+background: #1973B0;
+background: radial-gradient(circle, rgba(25, 115, 176, 1) 8%, rgba(52, 152, 219, 1) 25%, rgba(125, 189, 232, 1) 36%, rgba(52, 152, 219, 1) 46%, rgba(52, 152, 219, 1) 81%, rgba(25, 115, 176, 1) 92%);
+  
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.nav-menu li a:hover {
+    color: #333;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Главная секция */
+.hero {
+    background: url(img/-рынок-СПб-e1535105854298.jpg) center/cover no-repeat ;
+    text-align: center;
+    padding: 10rem 0 0 0;
+    color: #333;
+  
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin: 2px;  /* x y blur spread color */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease; /* Плавный эффект */
+  border: none;
+ 
+   
+ 
+}
+
+.btn:hover {
+    background: #2980b9;
+    transform: scale(1.05); /* Состояние при наведении (или другом событии) */
+transition: transform 0.5s ease-in-out; /* Плавный переход для transform */
+}
+
+/* Схема рынка */
+.scheme {
+    padding: 3rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.scheme h2 {
+    margin-bottom: 1.5rem;
+
+}
+.scheme p{
+    padding: 1.5rem 0;
+}
+.scheme svg {
+position: absolute;
+top: 0;
+left: 0;
+width:100%;
+height: 100%;
+
+}
+
+.scheme-image {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+.fruits_vegetables{
+    padding: 2rem;
+}
+
+/* О рынке */
+.about {
+    background: #f4f4f4;
+    padding: 3rem 0;
+    text-align: center;
+    margin: 3rem 0;
+ 
+}
+
+.about h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* Контакты */
+.contacts {
+    padding: 3rem 0;
+    text-align: center;
+
+}
+
+.contacts h2 {
+    margin-bottom: 1.5rem;
+}
+
+.contacts p {
+    margin-bottom: 0.8rem;
+}
+
+.contacts a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.contacts a:hover {
+    text-decoration: underline;
+}
+
+/* Подвал */
+footer .container {
+    background: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #3498db;
+        padding: 1rem 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        margin: 1px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        margin: 0.5px;
+    }
+
+    .scheme h2, .about h2, .contacts h2 {
+        font-size: 1.5rem;
+    }
+}
+.rent {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+   
+}
+.rent-benefits, .rent-options {
+    margin-bottom: 40px;
+
+   
+}
+.rent-benefits ul, .rent-options ul {
+    list-style-type: none;
+    padding-left: 20px;
+    
+}
+.rent-form {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 30px;
+}
+.rent-form input, .rent-form select, .rent-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.rent-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.rent-form button:hover {
+    background-color: #0056b3;
+}
+.gallery {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+ 
+}
+.gallery-grid img {
+    width: 320px; //100%
+    height: 320px;
+    border-radius: 10px;
+    object-fit: cover;//COVER
+
+
+   
+
+    
+}
+
+
+/* Общие стили для всех изображений */
+img {
+    max-width: 100%; /* Убедитесь, что изображение не выходит за контейнер */
+    height: auto; /* Сохраняет пропорции */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+.img-map {
+  box-shadow: none;
+}
+/* Стили для галереи */
+.gallery-image {
+    width: 250px; /* Фиксированная ширина */
+    height: 250px; /* Фиксированная высота */
+    object-fit: cover; /* Обрезает изображение, сохраняя пропорции */
+    border-radius: 10px; /* Опционально, для округления углов */
+   
+}
+
+/* Сетка галереи */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Адаптивная сетка */
+    gap: 20px; /* Расстояние между изображениями */
+    padding: 20px 0;
+    /* transition: transform 1s ease-in-out; /* Плавное изменение */ 
+    transform: scale(1); /* Начальное состояние */
+
+   
+}
+.gallery-grid :hover{
+    /* transform: translateY(-2px) ; /* Перемещение вверх на 10px */
+ transform: scale(1.05); /* Состояние при наведении (или другом событии) */
+transition: transform 0.5s ease-in-out; /* Плавный переход для transform */
+}
+
+
+
+/* Стили для схемы (если нужно единый размер) */
+.scheme-image {
+    width: 100%; /* Полная ширина контейнера */
+    height: auto; /* Фиксированная высота */
+    object-fit: contain; /* Вписывает изображение без обрезки */
+}
+
+.map {
+    position: relative;
+    background-color: white;
+  
+}
+.map img {
+    width: 100%;
+    height: auto;
+}
+.map svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    
+}
+.map svg path {
+    fill:none ; /* Убираем обводку */
+    pointer-events: all; /* Разрешаем быть целью событий мыши */
+    cursor: pointer; /* Меняем курсор при наведении */
+}
+.map svg path:hover {
+    animation: hoverElement 2s linear infinite; /* При наведении включаем анимацию */
+}
+
+@keyframes hoverElement { /* Сама анимация */
+    0% {
+        fill:#2E79BC ;
+        opacity: 0.5;
+    }
+    50% {
+        fill: rgb(38, 209, 144);
+         opacity: 0.5;
+
+    }
+    100% {
+        fill: #2E79BC;
+         opacity: 0.5; 
+    }
+}
+
+
+@keyframes hoverElement { 
+    0% {
+        fill: #2E79BC;
+        opacity: 0.5;
+    }
+    50% {
+        fill: rgb(38, 209, 144);
+        opacity: 0.5;
+    }
+    100% {
+        fill:#2E79BC;
+         opacity: 0.5;
+    }
+}
+.info__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: 0.3s all;
+    pointer-events: none;
+    z-index: 10;
+ 
+}
+.info__bg.active {
+    pointer-events: all;
+    opacity: 1;
+    transition: 0.3s all;
+}
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    width: 400px;
+}
+
+@media screen  and ( max-width: 780px) {
+  .info {
+    padding: 2vw;
+    
+    width: 300px;
+
+   font-size: x-small;
+  }
+}
+
+  
+  
+.tooltip {
+    position: fixed;  /* Changed from absolute */
+    display: none;
+    background-color: #fff;  /* Example styling */
+    border: 1px solid #ccc;
+    padding: 5px;
+    pointer-events: none;  /* So it doesn't block hovers */
+    z-index: 1000;  /* Ensure it's on top */
+    border-radius: 1rem;
+    font-size: 0.8em;
+}
+@media (max-width: 768px) {
+  .tooltip {
+    display: none !important;
+  }
+ }
+#phone-fab {
+  position: fixed;
+  bottom: 102px;
+  right: max(32px, calc((100vw - 1200px) / 2 + 32px));
+  background: none;
+  border: none;
+  box-shadow: none;
+  width: 56px;
+  height: 56px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+}
+#phone-fab.visible {
+  opacity: 1;
+  pointer-events: auto;
+
+}
+#phone-fab i {
+  color: #2196f3;
+  font-size: 48px;
+
+ 
+}
+#phone-fab.visible i {
+  animation: phone-ring .8s infinite cubic-bezier(.36,.07,.19,.97) both;
+ 
+}
+@keyframes phone-ring {
+    0% { transform: rotate(0deg);}
+   10% { transform: rotate(-10deg);}
+   20% { transform: rotate(10deg);}
+   30% { transform: rotate(-8deg);}
+   40% { transform: rotate(8deg);}
+   50% { transform: rotate(-6deg);}
+   60% { transform: rotate(6deg);}
+   70% { transform: rotate(-4deg);}
+   80% { transform: rotate(4deg);}
+   90% { transform: rotate(0deg);}
+   100% { transform: rotate(0deg);}
+}
+#phone-fab:hover i {
+    filter: drop-shadow(0px 4px 16px #2196f3);
+}
+/*slaider*/
+* {
+  box-sizing: border-box;
+}
+
+/* Контейнер слайдера */
+.slideshow-container {
+  max-width: 600px;
+  position: relative;
+  margin: auto;
+  border: #333 solid 2px;
+  border-radius: 1rem;
+  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3,);
+  padding: 1rem;
+;
+
+}
+
+/* Скрываем слайды по умолчанию */
+.mySlides {
+  display: none;
+}
+
+/* Кнопки предыдущий/следующий */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width:auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: #f1d1d1;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+ 
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3), ;
+}
+
+/* Позиция кнопки "следующий" справа */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev{
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Эффект наведения на кнопки */
+.prev:hover,
+.next:hover {
+  background-color: #2196f3;
+}
+
+/* Текст подписи */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Номер слайда (1/3 и т.д.) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Индикаторы (точки) */
+.dot {
+  cursor: pointer;
+  height:10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color:#2196f3 ;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/*.active,
+.dot:hover {
+  background-color: #920303;
+
+}*/
+
+/* Анимация затухания */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+hr{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.active 
+     {
+  /* Название, длительность, линейность, бесконечность */
+  animation: colorChange 6s infinite;
+}
+
+@keyframes colorChange {
+    0% { fill: rgb(6, 90, 13); }
+   
+    75% { fill:rgb(163, 240, 186);}
+    100% { fill:rgb(7, 73, 27);}
+}
+.info__content {
+    position: relative; /* Чтобы крестик позиционировался относительно окна */
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    color:#2196f3 ;
+}
+
