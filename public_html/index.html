@@ -147,6 +147,38 @@ z"  />
                 <path class="continent"  data-title=" Свободные прилавки  " data-photo="imgfotofreemest/134-137.jpg " style="" data-text="Торговые прилавки. 2 метра. 19000₽ в месяц за один прилавок"  stroke="" stroke-width="2"  d="m 532.85721,359.8316
 a 25,25 0 0 1 -25,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25,25
 z"  /> 
+
+        
+              <path class="continent"  data-title="Торговый ларь " data-photo="Freepoint/90.jpg " style="opacity: 0.78;
+fill: #afd9aa;
+stroke-width: 1.2;
+stroke-linejoin: round;" data-text="Торговое место на центральном . Аренда 60000₽ в месяц"  stroke="" stroke-width="2"  d="m 1005.6467,383.71333
+a 25,25 0 0 1 -25.00005,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25.00005,25
+z"  />      
+
+
+              <path class="continent"  data-title="Торговый ларь " data-photo="Freepoint/100.jpg, Freepoint/B10.jpg, Freepoint/90.jpg" style="opacity: 0.78;
+fill: #afd9aa;
+stroke-width: 1.2;
+stroke-linejoin: round;" data-text="Торговое место на центральном входе . Аренда 45000₽ в месяц"  stroke="" stroke-width="2"  d="m 1047.5035,403.18163
+a 25,25 0 0 1 -25,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25,25
+z"  />      
+
+
+              <path class="continent"  data-title="Магазин в корп. В 2 этаж " data-photo="Freepoint/B10.jpg " style="opacity: 0.78;
+fill: #afd9aa;
+stroke-width: 1.2;
+stroke-linejoin: round;" data-text="Готов к сдаче в аренду. Начни свой бизнес на Сенном рынке. 25000₽ в месяц"  stroke="" stroke-width="2"  d="m 1072.3824,455.33947
+a 25,25 0 0 1 -25,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25,25
+z"  />      
+
+
+ 
+
+
+              <path class="continent"  data-title="Свободные места под навесом" data-photo=" img/Без названия.jpg" style="" data-text="На нашем рынке можно не только купить приглянувшийся товар, но и вкусно и полезно закусить."  stroke="" stroke-width="2"  d="m 727.94666,228.05333
+a 25,25 0 0 1 -25,25 25,25 0 0 1 -25,-25 25,25 0 0 1 25,-25 25,25 0 0 1 25,25
+z"  /> 
                          
              
              
@@ -156,23 +188,28 @@ z"  />
                     </svg>
         </div>
       </section>  
-        <div class="info__bg">
-                 <div class="info">
-                     <div class="info__content">
-                     <span class="close-popup">&times;</span> <!-- Сам крестик -->
-                     <img class="info__photo" src="" alt="">
-                     <h2 class="info__title">
+       <div class="info__bg">
+    <div class="info">
+        <div class="info__content">
+            <span class="close-popup">&times;</span>
+            
+            <!-- Слайдер -->
+            <div class="popup-slider">
+                <div class="slides-container" id="popup-slides"></div>
+                
+                <!-- Стрелки -->
+                <button class="slider-btn prev" id="prev-slide">‹</button>
+                <button class="slider-btn next" id="next-slide">›</button>
+                
+                <!-- Пагинация (точки) -->
+                <div class="slider-dots" id="slider-dots"></div>
+            </div>
 
-                        </h2>
-                     <p class="info__text">
-                    
-                     </p>
-                 
-              </div>
-
-                </div>
-      
+            <h2 class="info__title"></h2>
+            <p class="info__text"></p>
         </div>
+    </div>
+</div>
         
     
               <div  class="tooltip" ></div>
@@ -304,55 +341,95 @@ z"  />
     </script>
 
 <script>
-let continents = document.querySelectorAll('.continent');
-let popupBg = document.querySelector('.info__bg');
-let popup__photo = document.querySelector('.info__photo');
-let popup__title = document.querySelector('.info__title');
-let popup__text = document.querySelector('.info__text');
-let tooltip = document.querySelector('.tooltip');
+const continents = document.querySelectorAll('.continent');
+const popupBg = document.querySelector('.info__bg');
+const popupTitle = document.querySelector('.info__title');
+const popupText = document.querySelector('.info__text');
+const slidesContainer = document.getElementById('popup-slides');
+const dotsContainer = document.getElementById('slider-dots');
 
-continents.forEach((item) => {
+let currentSlide = 0;
+let slides = [];
+
+// Создание слайдера
+function createSlider(photoList) {
+    slidesContainer.innerHTML = '';
+    dotsContainer.innerHTML = '';
+    slides = photoList;
+
+    photoList.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src.trim();
+        img.classList.add('popup-slide');
+        if (index === 0) img.classList.add('active');
+        slidesContainer.appendChild(img);
+
+        // Точки
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    currentSlide = 0;
+}
+
+// Переключение слайдов
+function goToSlide(n) {
+    const allSlides = slidesContainer.querySelectorAll('.popup-slide');
+    const allDots = dotsContainer.querySelectorAll('.dot');
+
+    allSlides.forEach(slide => slide.classList.remove('active'));
+    allDots.forEach(dot => dot.classList.remove('active'));
+
+    allSlides[n].classList.add('active');
+    allDots[n].classList.add('active');
+    currentSlide = n;
+}
+
+function nextSlide() {
+    let next = currentSlide + 1;
+    if (next >= slides.length) next = 0;
+    goToSlide(next);
+}
+
+function prevSlide() {
+    let prev = currentSlide - 1;
+    if (prev < 0) prev = slides.length - 1;
+    goToSlide(prev);
+}
+
+// Основная логика клика
+continents.forEach(item => {
     item.addEventListener('click', function() {
-        popup__title.textContent = this.getAttribute('data-title');
-        popup__photo.setAttribute('src', this.getAttribute('data-photo'));
-        popup__text.textContent = this.getAttribute('data-text');
+        const title = this.getAttribute('data-title');
+        const text = this.getAttribute('data-text');
+        const photosStr = this.getAttribute('data-photos') || this.getAttribute('data-photo');
+
+        popupTitle.textContent = title;
+        popupText.textContent = text;
+
+        const photoArray = photosStr.includes(',') 
+            ? photosStr.split(',') 
+            : [photosStr];
+
+        createSlider(photoArray);
         popupBg.classList.add('active');
     });
-
-    item.addEventListener('mouseenter', function() {
-        tooltip.textContent = item.getAttribute('data-title');
-        tooltip.style.display = 'block';
-    });
-
-    item.addEventListener('mouseleave', function() {
-        tooltip.textContent = item.getAttribute('data-title');
-        tooltip.style.display = 'none';
-    }); 
-
-    // ВСТАВИЛ ПО СОВЕТУ Х
-    item.addEventListener('mousemove', function(e) {
-    let tooltipWidth = tooltip.offsetWidth;
-    let tooltipHeight = tooltip.offsetHeight;
-    let x = e.clientX + 20;
-    let y = e.clientY + 20;
-    if (x + tooltipWidth > window.innerWidth) x = e.clientX - tooltipWidth - 20;  // Flip to left if overflowing right
-    if (y + tooltipHeight > window.innerHeight) y = e.clientY - tooltipHeight - 20;  // Flip above
-    tooltip.style.left = x + 'px';
-    tooltip.style.top = y + 'px';
 });
 
-   
-   /* item.addEventListener('mousemove', function(e) {
-        tooltip.style.top = (e.y + 20) + 'px';
-        tooltip.style.left = (e.x + 20) + 'px';
-    });*/
+// Кнопки слайдера
+document.getElementById('next-slide').addEventListener('click', nextSlide);
+document.getElementById('prev-slide').addEventListener('click', prevSlide);
 
+// Закрытие попапа
+document.querySelector('.close-popup').addEventListener('click', () => {
+    popupBg.classList.remove('active');
 });
 
-document.addEventListener('click', (e) => {
-    if(e.target === popupBg) {
-        popupBg.classList.remove('active');
-    }
+popupBg.addEventListener('click', (e) => {
+    if (e.target === popupBg) popupBg.classList.remove('active');
 });
 </script>
 <!--Телефонная трубка-->
